@@ -8,20 +8,24 @@ using UnityEngine.EventSystems;
 public class RandomItem : MonoBehaviour, IPointerDownHandler
 {
 
-    public string[] cafeItems = {"Cappuccino", "Espresso", "Latte", "Puppyccino",
+    public string[] cafeItems = {"Hot Cocoa", "Cappuccino", "Espresso", "Latte", "Puppyccino",
     "Double Espresso", "Iced Latte", "Spanish Latte", "Oat Milk Latte",
     "Chai Latte", "Americano", "Cold Brew"};
     public TextMeshProUGUI textComponent;
+    
 
     // Start is called before the first frame update
     void Start()
     {
-        if (textComponent == null) {
+        if (textComponent == null)
+        {
             textComponent = GetComponentInChildren<TextMeshProUGUI>();
         }
 
-        getRandomItem();
-          
+        if (textComponent != null)
+        {
+            getRandomItem();
+        }
     }
 
     // Update is called once per frame
@@ -40,7 +44,7 @@ public class RandomItem : MonoBehaviour, IPointerDownHandler
 
     private void getRandomItem()
     {
-        string randomItem = cafeItems[Random.Range(0, cafeItems.Length)];
+       string randomItem = cafeItems[Random.Range(0, cafeItems.Length)];
 
         textComponent.text = randomItem;
     }
