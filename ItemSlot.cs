@@ -28,11 +28,11 @@ public class ItemSlot : MonoBehaviour, IDropHandler
             Debug.Log("Dropped item name: " + ingredientsInSlots[slotIndex]);
         }
 
-       
-
-
+      
 
     }
+
+    // TODO : add a button for submitting ingredients and check against the recipe of the card in the corner
 
     
 }

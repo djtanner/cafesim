@@ -8,11 +8,16 @@ using UnityEngine.EventSystems;
 public class RandomItem : MonoBehaviour, IPointerDownHandler
 {
 
-    public string[] cafeItems = {"Hot Cocoa", "Cappuccino", "Espresso", "Latte", "Puppyccino",
-    "Double Espresso", "Iced Latte", "Spanish Latte", "Oat Milk Latte",
-    "Chai Latte", "Americano", "Cold Brew"};
+    public RecipeItemData[] recipeItems;
+    //public string[] cafeItems = {"Hot Cocoa", "Cappuccino", "Espresso", "Latte", "Puppyccino",
+    //"Double Espresso", "Iced Latte", "Spanish Latte", "Oat Milk Latte",
+    //"Chai Latte", "Americano", "Cold Brew"};
     public TextMeshProUGUI textComponent;
-    
+
+    public RecipeItemData randomItem;
+    public GameLogic gameLogic;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +27,7 @@ public class RandomItem : MonoBehaviour, IPointerDownHandler
             textComponent = GetComponentInChildren<TextMeshProUGUI>();
         }
 
-        if (textComponent != null)
+        if (textComponent != null && recipeItems.Length > 0)
         {
             getRandomItem();
         }
@@ -44,9 +49,17 @@ public class RandomItem : MonoBehaviour, IPointerDownHandler
 
     private void getRandomItem()
     {
-       string randomItem = cafeItems[Random.Range(0, cafeItems.Length)];
 
-        textComponent.text = randomItem;
+        Debug.Log(recipeItems.Length);
+
+
+         randomItem = recipeItems[Random.Range(0, recipeItems.Length)];
+
+        gameLogic.AssignRandomItem(randomItem);
+        textComponent.text = randomItem.itemName;
+
+        
+
     }
-
+    
 }
